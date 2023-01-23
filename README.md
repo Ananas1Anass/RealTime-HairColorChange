@@ -4,6 +4,28 @@
  - [ Raw model ](  https://bordeauxinpfr-my.sharepoint.com/:u:/g/personal/anass_boukhems_bordeaux-inp_fr/Eec3ilshFFFBg2T_ZYQGXAEBRB34qo93kJk9gwuYZyKQ_A?e=WlhN23
  "Location : model_checkpoints/97acc_raw")
 
+## Requirements : 
+
+```bash
+gh repo clone Ananas1Anass/RealTime-HairColorChange
+pip install -r requirements.txt
+```
+#### Look into requirements.txt
+```bash
+albumentations==1.3.0
+numpy==1.24.1
+opencv-python==4.5.4.60
+scipy==1.9.1
+torch==1.13.1
+torchvision==0.14.1
+flask==1.1.2
+numpy==1.24.1
+matplotlib==3.5.2
+```
+
+
+
+
 ## 🔗 Papers
 - [ Paper n°1 : Hair detection, segmentation, and hairstyle classification in the wild](https://doi.org/10.1016/j.imavis.2018.02.001 "Hair detection, segmentation, and hairstyle classification in the wild")
 - [ Paper n°2 : Real-time Hair Segmentation and Recoloring on Mobile GPUs]( 	
