@@ -55,7 +55,7 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
               artem.buzlukov@gmail.com,
               sebastienbatty@gmail.com,
               Kawtar.abidine00@gmail.com}
-              
-
-
 ```
+<p align="left">
+  <img alt="Light" src=".WebServer_Flask/templates/enseirb_logo.png" width="20%">
+ </p>
