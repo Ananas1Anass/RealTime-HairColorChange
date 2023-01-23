@@ -30,7 +30,6 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
               sebastienbatty@gmail.com,
               Kawtar.abidine00@gmail.com}
               
-}
 
 
 ```
