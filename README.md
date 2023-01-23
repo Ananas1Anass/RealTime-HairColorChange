@@ -7,7 +7,8 @@
 ## Requirements : 
 
 ```bash
-gh repo clone Ananas1Anass/RealTime-HairColorChange
+https://github.com/Ananas1Anass/RealTime-HairColorChange.git
+cd RealTime-HairColorChange/
 pip install -r requirements.txt
 ```
 #### Look into requirements.txt
