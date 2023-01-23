@@ -1,0 +1,257 @@
+<html>
+  <head>
+    <style>
+        html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, button {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline;
+        }
+  
+        body {
+          line-height: 1;
+        }
+  
+        ul {
+          list-style: none;
+        }
+  
+        .container {
+          display: flex;
+          height: 100%;
+        }
+  
+        .split {
+          width: 50%;
+          height: 100%;
+          box-sizing: border-box;
+        }
+  
+        .left {
+          background-color: #eee;
+          padding: 20px;
+        }
+  
+        .right {
+          background-color: #fff;
+          padding: 20px;
+        }
+  
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        input[type=file] {
+          margin-bottom: 20px;
+          width: 100%;
+          height: 40px;
+          border: 2px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+        }
+  
+        input[type=submit] {
+          width: 100%;
+          height: 
+          40px;
+          border: none;
+          border-radius: 5px;
+          background-color: #000000;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+        }
+  
+        input[type=submit]:hover {
+          background-color: #000000;
+        }
+  
+        .image-container {
+          display: flex;
+          justify-content: center;
+          flex-wrap: nowrap;
+        }
+  
+        img {
+          width: 80%;
+          border: 2px solid #ccc;
+          border-radius: 5px;
+        }
+        button {
+          display: inline-block;
+          padding: 10px 20px;
+          margin: 10px;
+          font-size: 16px;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          background-color: #333;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #555;
+        }
+
+        button:active {
+          background-color: #777;
+        }
+
+      </style>
+        </head>
+        <body>
+            <div id="title">
+                <h1>Hair Segmentation</h1>
+              </div>
+            <style>
+                #title {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                margin: 10px;
+                }
+                #title h1 {
+                color: white;
+                background-color: black;
+                display: inline-block;
+                padding: 10px 20px;
+                }
+            </style>              
+            <div class="container">
+                <form id="upload-form">
+                  <input type="file" id="image-input" accept="image/*">
+                  <input type="submit" value="Predict">
+                </form>
+                <div class="image-container">
+                  <img id="input-image" src="" alt="Input image">
+                  <img id="predicted-image" src="" alt="Predicted image">
+                  <img id="image_color" src="" alt="Image Color">
+                  <div id="color-buttons">
+                    <!-- Color buttons will be added here -->
+                  </div>
+              </div>
+            <div id="logo">
+                <img src="templates\enseirb_logo.png" alt="Logo">
+              </div>
+    <script>
+    async function readImageFile(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      return new Promise((resolve, reject) => {
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+        reader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    }
+    const colorOptions = [[255, 0, 0],[0, 255, 0],[0, 0, 255]];
+    const form = document.getElementById('upload-form');
+    const inputImage = document.getElementById('input-image');
+    const imageInput = document.getElementById('image-input');
+    const predictedImage = document.getElementById('predicted-image');
+    const changedcolor = document.getElementById('image_color');
+
+
+
+    // this part of script display directly the picture as soon as it is uploaded 
+    imageInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        inputImage.src = event.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    
+    form.onsubmit = async (event) => {
+      event.preventDefault();
+
+      // read img and wait
+      const image = await readImageFile(imageInput.files[0]);
+      // update img 
+      inputImage.src = image;
+      // POST request -----------> SERVER ON FLASK (inference_web.py)
+      const response = await fetch('/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: image.split(',')[1] }),
+        mode: 'cors',
+        cache: 'default'
+      });
+
+      const blob = await response.blob();
+      const src = URL.createObjectURL(blob);
+      predictedImage.src = src;
+    };
+    
+
+colorOptions.forEach(color => {
+  const button = document.createElement('button');
+  button.innerText = `Change to ${color}`;
+  button.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+  button.addEventListener('click', async () => {
+
+    const imageData = inputImage.src;
+
+    const response = await fetch('/change_color', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: imageData.split(',')[1], color: color }),
+        mode: 'cors',
+        cache: 'default'
+    });
+      const blob = await response.blob();
+      const src = URL.createObjectURL(blob);
+      changedcolor.src = src;
+
+    //const updatedImageData = await response.json();
+
+    //image_color.src = URL.createObjectURL(updatedImageData);
+  });
+  document.getElementById('color-buttons').appendChild(button);
+});
+    const webcamButton = document.getElementById("webcam-button");
+    const video = document.querySelector('video');
+
+    webcamButton.addEventListener("click", () => {
+    const video = document.querySelector('video');
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        video.srcObject = stream;
+    });
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+    const color = [0, 255, 0]; // the color to change the mask to
+    const frameCount = 0;
+    setInterval(() => {
+        ctx.drawImage(video, 0, 0, 256, 256);
+        const imageData = ctx.getImageData(0, 0, 256, 256);
+        fetch('/video_feed', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageData: imageData, color: color, frameCount: frameCount }),
+        }).then(response => response.blob())
+        .then(blob => {
+          const img = new Image();
+      img.src = URL.createObjectURL(blob);
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+    }        });
+    }, 1000/75); // 24fps
+});
+      </script>
+  </body>
+</html>
