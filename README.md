@@ -14,7 +14,7 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
 
 ## Authors
 ```
-  author    = {BOUKHEMS Anass,
+  author    = {Anass BOUKHEMS,
                Abderrahim ELHAZMI,
                Arthur TODER,
               Jean-Baptiste DEROUET,
@@ -24,6 +24,13 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
   title     = {Real-time hair color change using Deep Learning},
   year      = {2022},
   emails    =  {boukhemsanass0@gmail.com,
-              g}
+              abderrahimelhazmi@gmail.com,
+              toder.arthur@gmail.com,
+              artem.buzlukov@gmail.com,
+              sebastienbatty@gmail.com,
+              Kawtar.abidine00@gmail.com}
+              
+}
+
 
 ```
