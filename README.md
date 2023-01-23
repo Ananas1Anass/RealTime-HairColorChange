@@ -24,8 +24,11 @@ numpy==1.24.1
 matplotlib==3.5.2
 ```
 
-
-
+## Running Flask:
+Chosen port : 5002 on localhost. If not available, change it to any random port ( except reserved ports ) 
+```bash
+python inference_web.py
+```
 
 ## 🔗 Papers
 - [ Paper n°1 : Hair detection, segmentation, and hairstyle classification in the wild](https://doi.org/10.1016/j.imavis.2018.02.001 "Hair detection, segmentation, and hairstyle classification in the wild")
