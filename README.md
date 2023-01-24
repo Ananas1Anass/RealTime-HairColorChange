@@ -52,6 +52,7 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
   emails    =  {boukhemsanass0@gmail.com,
               abderrahimelhazmi@gmail.com,
               toder.arthur@gmail.com,
+              derouet.jeanbaptiste@gmail.com,
               artem.buzlukov@gmail.com,
               sebastienbatty@gmail.com,
               Kawtar.abidine00@gmail.com}
