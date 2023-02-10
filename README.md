@@ -35,7 +35,7 @@ python inference_web.py
 - [ Paper n°2 : Real-time Hair Segmentation and Recoloring on Mobile GPUs]( 	
 https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recoloring on Mobile GPUs")
 ## 🔗 Projet Report in form of scientific paper:
-- [ Real-time hair color change by Deep Learning]( RealTime-HairColorChange/Rapport_HAIR_CHANGE_PROJECT.pdf
+- [ Real-time hair color change by Deep Learning](https://github.com/Ananas1Anass/RealTime-HairColorChange/blob/main/Rapport_HAIR_CHANGE_PROJECT.pdf
  "Real-time hair color change by Deep Learning")
 
 ## Authors
