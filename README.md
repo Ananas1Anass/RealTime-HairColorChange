@@ -47,8 +47,8 @@ https://doi.org/10.48550/arXiv.1907.06740 "Real-time Hair Segmentation and Recol
               Artem BUZLUKOV,
               Sébastien BATTY,
               Kawtar ABIDINE},
-  title     = {Real-time hair color change using Deep Learning},
-  year      = {2022},
+  title     = {Real-time hair color change using Deep Learning}
+  year      = {2022}
   emails    =  {boukhemsanass0@gmail.com,
               abderrahimelhazmi@gmail.com,
               toder.arthur@gmail.com,
